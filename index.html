@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Happy Valentine’s Day Gottu ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  overflow:hidden;
+}
+
+.page{
+  display:none;
+  height:100vh;
+  width:100%;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+
+.page.active{ display:flex; }
+
+.card{
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+  max-width:380px;
+  width:100%;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  position:relative;
+}
+
+.dark{
+  background:#1b0f2f;
+  color:white;
+}
+
+h1 span{ color:#ff2e63; }
+
+button{
+  margin-top:20px;
+  padding:14px 28px;
+  border:none;
+  border-radius:30px;
+  font-size:1rem;
+  background:#ff2e63;
+  color:white;
+  cursor:pointer;
+  position:relative;
+  z-index:3;
+}
+
+.secondary{ background:#6c63ff; }
+
+#noBtn{
+  position:absolute;
+  transition:0.2s ease;
+}
+
+/* Sparkle */
+.sparkle-word{
+  position:relative;
+  color:#ff2e63;
+  font-weight:600;
+}
+
+.sparkle-word::before,
+.sparkle-word::after{
+  content:'❤️';
+  position:absolute;
+  font-size:0.7rem;
+  opacity:0;
+  animation:sparkle 1.5s infinite;
+}
+
+.sparkle-word::before{
+  top:-8px;
+  left:-12px;
+}
+
+.sparkle-word::after{
+  bottom:-8px;
+  right:-12px;
+  animation-delay:.7s;
+}
+
+@keyframes sparkle{
+  0%{opacity:0; transform:scale(0.5);}
+  50%{opacity:1; transform:scale(1);}
+  100%{opacity:0; transform:scale(0.5);}
+}
+
+/* Countdown */
+.countdown{
+  display:flex;
+  justify-content:space-between;
+  margin:20px 0;
+}
+
+.time-box{
+  background:#ffe1ea;
+  padding:10px;
+  border-radius:12px;
+  width:22%;
+}
+
+.time-box h2{
+  color:#ff2e63;
+  font-size:1.6rem;
+}
+
+.time-box small{
+  font-size:.7rem;
+}
+
+/* Lights */
+.light{
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  position:absolute;
+  animation:blink 1s infinite alternate;
+}
+
+@keyframes blink{
+  from{ opacity:.3 }
+  to{ opacity:1 }
+}
+
+/* Page 7 */
+.heart{
+  font-size:4rem;
+  position:absolute;
+  left:50%;
+  bottom:-140px;
+  transform:translateX(-50%);
+  animation:heartUp 1s ease forwards;
+  animation-delay:2s;
+}
+
+@keyframes heartUp{
+  to{ bottom:-10px; }
+}
+
+/* Floating Hearts */
+.heart-float{
+  position:fixed;
+  bottom:-40px;
+  font-size:24px;
+  animation:floatUp linear infinite;
+}
+
+@keyframes floatUp{
+  to{ transform:translateY(-120vh); opacity:0; }
+}
+
+/* Envelope */
+.page8-container{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+
+.envelope{
+  width:320px;
+  height:220px;
+  background:#ff2e63;
+  position:relative;
+  border-radius:12px;
+  cursor:pointer;
+  overflow:hidden;
+}
+
+.letter{
+  position:absolute;
+  background:white;
+  width:92%;
+  height:85%;
+  left:4%;
+  bottom:-110%;
+  padding:15px;
+  border-radius:10px;
+  transition:.6s;
+  font-size:.9rem;
+  overflow-y:auto;
+}
+
+.envelope.open .letter{
+  bottom:8%;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active">
+  <div class="card">
+    <h1>Counting down to<br><span>Gottu</span>'s Valentine 💘</h1>
+    <div class="countdown">
+      <div class="time-box"><h2 id="days">0</h2><small>DAYS</small></div>
+      <div class="time-box"><h2 id="hours">0</h2><small>HOURS</small></div>
+      <div class="time-box"><h2 id="minutes">0</h2><small>MIN</small></div>
+      <div class="time-box"><h2 id="seconds">0</h2><small>SEC</small></div>
+    </div>
+    <button onclick="nextPage()">Let’s Begin ❤️</button>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <div class="card">
+    <h1>Happy Valentine’s Day<br><span>Gottu</span> 💙</h1>
+    <button onclick="nextPage()">A Surprise Awaits ✨</button>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <div class="card">
+    <h2>You are someone really special 💫</h2>
+    <button onclick="nextPage()">Next</button>
+  </div>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+  <div class="card">
+    <h2>Ready to see what I made for you? 😏</h2>
+    <button onclick="nextPage()">Yes ❤️</button>
+    <button class="secondary" id="noBtn">No 😜</button>
+  </div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page">
+  <div class="card">
+    <h2>Just for you, <span class="sparkle-word">Gottu</span> 💖</h2>
+    <button onclick="nextPage()">Show Me 💘</button>
+  </div>
+</div>
+
+<!-- PAGE 6 -->
+<div class="page">
+  <div class="card">
+    <h2>Let’s light up this Valentine ✨</h2>
+    <button onclick="turnLights()">Turn On Love ❤️</button>
+  </div>
+</div>
+
+<!-- PAGE 7 -->
+<div class="page dark" id="celebrationPage">
+  <div class="card dark" style="padding-bottom:90px;">
+    <h2>Happy Valentine’s Day 💘</h2>
+    <div class="heart">❤️</div>
+    <button onclick="nextPage()">One Last Thing 💌</button>
+  </div>
+</div>
+
+<!-- PAGE 8 -->
+<div class="page">
+  <div class="page8-container">
+    <h2>A Message For You 💙</h2><br>
+    <div class="envelope" onclick="openEnvelope(this)">
+      <div class="letter">
+        <strong>Dear Gottu 💙</strong><br><br>
+        You are strong, genuine and someone who makes everything better just by being around.  
+        <br><br>
+        On this Valentine’s Day, I just want you to know —  
+        you matter more than you think ❤️  
+        <br><br>
+        Keep smiling, keep shining, and never forget how special you are 💫  
+        <br><br>
+        — With love 💖
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let page = 0;
+const pages = document.querySelectorAll('.page');
+
+function nextPage(){
+  pages[page].classList.remove('active');
+  page++;
+  pages[page].classList.add('active');
+  if(pages[page].id === 'celebrationPage') spawnHearts();
+}
+
+/* Countdown – 14 FEB */
+function updateCountdown(){
+  const now = new Date();
+  let year = now.getFullYear();
+  let valentine = new Date(year, 1, 14);
+  if(now > valentine) valentine = new Date(year + 1, 1, 14);
+  const diff = valentine - now;
+
+  days.innerText = Math.floor(diff / (1000*60*60*24));
+  hours.innerText = Math.floor((diff / (1000*60*60)) % 24);
+  minutes.innerText = Math.floor((diff / (1000*60)) % 60);
+  seconds.innerText = Math.floor((diff / 1000) % 60);
+}
+setInterval(updateCountdown,1000);
+updateCountdown();
+
+/* No Button Dodge */
+const noBtn = document.getElementById("noBtn");
+noBtn.addEventListener("mouseenter", ()=>{
+  const card=noBtn.parentElement;
+  noBtn.style.left=Math.random()*(card.clientWidth-noBtn.offsetWidth)+"px";
+  noBtn.style.top=Math.random()*(card.clientHeight-noBtn.offsetHeight)+"px";
+});
+
+/* Lights */
+function turnLights(){
+  nextPage();
+  for(let i=0;i<40;i++){
+    let l=document.createElement('div');
+    l.className='light';
+    l.style.background=`hsl(${Math.random()*360},100%,60%)`;
+    l.style.left=Math.random()*100+'%';
+    l.style.top=Math.random()*100+'%';
+    document.body.appendChild(l);
+    setTimeout(()=>l.remove(),8000);
+  }
+}
+
+/* Floating Hearts */
+function spawnHearts(){
+  for(let i=0;i<20;i++){
+    let h=document.createElement('div');
+    h.className='heart-float';
+    h.innerText='❤️';
+    h.style.left=Math.random()*100+'%';
+    h.style.animationDuration=(6+Math.random()*4)+'s';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),10000);
+  }
+}
+
+/* Envelope */
+function openEnvelope(el){
+  el.classList.add("open");
+}
+</script>
+
+</body>
+</html>
